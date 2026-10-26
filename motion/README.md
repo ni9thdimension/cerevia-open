@@ -1,4 +1,4 @@
-# Cerevia Motion
+# Cerevia™ Motion
 
 Physics-based UI motion with no dependencies. See the [repository README](../README.md) for the overview and an example.
 

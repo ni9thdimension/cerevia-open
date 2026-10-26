@@ -1,4 +1,4 @@
-# Cerevia Open
+# Cerevia™ Open
 
 Two small, tested building blocks from the team behind [Cerevia](https://cerevia.in), published under the MIT or Apache-2.0 license, at your choice.
 They are useful on their own and are separate from Cerevia's product.
