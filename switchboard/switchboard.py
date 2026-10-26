@@ -2,7 +2,7 @@
 # Copyright 2026 Ninth Dimension
 """switchboard.py: a ledger of every model call and an automatic switcher between providers. Standard library only.
 
-An application that talks to several model providers (Gemini, Groq, NVIDIA, OpenRouter, OpenAI, a model of your own) usually learns
+An application that talks to several model providers (hosted ones, or a model of your own) usually learns
 which one is broken the slow way: a call hangs for two minutes, the next feature tries the same dead provider first, and nobody can
 say which model answered what or how many tokens it cost. This module is the small piece that fixes that.
 
@@ -20,7 +20,7 @@ opinion, not an outage, so it is not cooled. Counts live in this process only. O
 Typical use:
 
     import switchboard as sb
-    for provider in sb.order(chain):                     # chain: [(client, "groq"), (client, "gemini"), ...]
+    for provider in sb.order(chain):                     # chain: [(client, "provider-a"), (client, "provider-b"), ...]
         if sb.should_skip(provider[1], chain): continue
         t0 = time.time()
         try:

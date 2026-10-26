@@ -1,7 +1,7 @@
 # Cerevia Open
 
 Two small, tested building blocks from the team behind [Cerevia](https://cerevia.in), published under the Apache License 2.0.
-They are useful on their own and contain nothing from Cerevia's product engine.
+They are useful on their own and are separate from Cerevia's product.
 
 | Package | What it is | Language | Needs |
 |---|---|---|---|
@@ -55,7 +55,7 @@ It keeps no prompts, no answers and no keys. Counts live in the running process,
 
 ## What is not here
 
-The Cerevia engine (the councils, the constitution and its wording, the post gate, decision memory, the Studio and the website's server code) is proprietary and is not part of this repository.
+Cerevia's product and its engine are proprietary and are not part of this repository.
 
 ## License
 

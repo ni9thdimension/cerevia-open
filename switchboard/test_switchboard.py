@@ -15,8 +15,8 @@ def fresh():
 
 def check_a_call_is_recorded_with_feature_model_time_and_tokens():
     fresh()
-    sb.record("groq", "drafts", True, 840, model="some-model", tin=1200, tout=3400)
-    s = sb.snapshot({"groq": {"provider": "groq", "enabled": True, "has_key": True}})
+    sb.record("prov_b", "drafts", True, 840, model="some-model", tin=1200, tout=3400)
+    s = sb.snapshot({"prov_b": {"provider": "prov_b", "enabled": True, "has_key": True}})
     r = s["providers"][0]
     assert r["calls"] == 1 and r["tokens_in"] == 1200 and r["tokens_out"] == 3400 and r["avg_ms"] == 840, r
     assert r["by_feature"]["drafts"]["tokens"] == 4600 and s["totals"]["tokens"] == 4600
@@ -61,15 +61,15 @@ def check_a_503_unavailable_cools_and_broken_json_cools_only_when_it_repeats():
 
 def check_the_three_modes_order_a_chain_as_they_say():
     fresh()
-    chain = [(object(), "gemini"), (object(), "groq"), (object(), "nvidia")]
-    sb.record("groq", "t", True, 3000)
-    sb.record("nvidia", "t", True, 400)
-    sb.record("gemini", "t", False, 1, error="HTTP 503 down")
-    assert [c[1] for c in sb.order(chain)] == ["groq", "nvidia", "gemini"]
+    chain = [(object(), "prov_a"), (object(), "prov_b"), (object(), "prov_c")]
+    sb.record("prov_b", "t", True, 3000)
+    sb.record("prov_c", "t", True, 400)
+    sb.record("prov_a", "t", False, 1, error="HTTP 503 down")
+    assert [c[1] for c in sb.order(chain)] == ["prov_b", "prov_c", "prov_a"]
     sb.set_mode("fastest")
-    assert [c[1] for c in sb.order(chain)] == ["nvidia", "groq", "gemini"]
+    assert [c[1] for c in sb.order(chain)] == ["prov_c", "prov_b", "prov_a"]
     sb.set_mode("fixed")
-    assert [c[1] for c in sb.order(chain)] == ["gemini", "groq", "nvidia"] and not sb.should_skip("gemini", chain)
+    assert [c[1] for c in sb.order(chain)] == ["prov_a", "prov_b", "prov_c"] and not sb.should_skip("prov_a", chain)
     try:
         sb.set_mode("turbo")
         raise AssertionError("an unknown mode was accepted")
