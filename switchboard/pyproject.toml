@@ -3,7 +3,7 @@ name = "model-switchboard"
 version = "0.1.0"
 description = "A ledger of every model call and an automatic switcher between model providers. Standard library only."
 readme = "README.md"
-license = { text = "Apache-2.0" }
+license = { text = "MIT OR Apache-2.0" }
 requires-python = ">=3.9"
 dependencies = []
 

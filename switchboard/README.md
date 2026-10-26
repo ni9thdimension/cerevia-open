@@ -4,4 +4,4 @@ A ledger of every model call and an automatic switcher between model providers. 
 
 Run the checks: `python test_switchboard.py`
 
-License: Apache-2.0. Copyright 2026 Ninth Dimension.
+License: MIT OR Apache-2.0. Copyright 2026 Rahul Vats, Cerevia.

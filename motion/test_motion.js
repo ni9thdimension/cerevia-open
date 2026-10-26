@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: Apache-2.0
-// Copyright 2026 Ninth Dimension
+// SPDX-License-Identifier: MIT OR Apache-2.0
+// Copyright 2026 Rahul Vats, Cerevia
 // node test_motion.js : the motion library must obey the physics it claims to.
 const M = require('./motion.js');
 let failed = 0;

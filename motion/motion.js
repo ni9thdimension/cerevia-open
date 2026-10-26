@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: Apache-2.0
-// Copyright 2026 Ninth Dimension
+// SPDX-License-Identifier: MIT OR Apache-2.0
+// Copyright 2026 Rahul Vats, Cerevia
 /* motion.js: Cerevia Motion, a small physics-based UI motion library. Four laws: spring, gravity, pendulum and collision, path. Plus a real particle system.
  *
  * Research behind it:
