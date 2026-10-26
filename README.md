@@ -59,7 +59,7 @@ Cerevia's product and its engine are proprietary and are not part of this reposi
 
 ## License
 
-Licensed under either of [MIT](LICENSE-MIT) or [Apache License 2.0](LICENSE-APACHE), at your option. See [NOTICE](NOTICE). The licenses cover this code. They do not grant any right to the name or logo **Cerevia**.
+Licensed under either of [MIT](LICENSE-MIT) or [Apache License 2.0](LICENSE-APACHE), at your option. See [NOTICE](NOTICE). The licenses cover this code. They do not grant any right to the name, logo or domain **Cerevia / cerevia.in**.
 
 ## Contributing and security
 

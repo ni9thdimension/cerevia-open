@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT OR Apache-2.0
-# Copyright 2026 Rahul Vats, Cerevia
+# Copyright 2026 Rahul Vats, Cerevia (cerevia.in)
 """switchboard.py: a ledger of every model call and an automatic switcher between providers. Standard library only.
 
 An application that talks to several model providers (hosted ones, or a model of your own) usually learns

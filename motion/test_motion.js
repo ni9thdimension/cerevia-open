@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
-// Copyright 2026 Rahul Vats, Cerevia
+// Copyright 2026 Rahul Vats, Cerevia (cerevia.in)
 // node test_motion.js : the motion library must obey the physics it claims to.
 const M = require('./motion.js');
 let failed = 0;

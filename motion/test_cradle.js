@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
-// Copyright 2026 Rahul Vats, Cerevia
+// Copyright 2026 Rahul Vats, Cerevia (cerevia.in)
 // node test_cradle.js : the cradle must obey the physics it claims to.
 const { create, G } = require('./cradle-physics.js');
 let failed = 0;

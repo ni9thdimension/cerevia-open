@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT OR Apache-2.0
-# Copyright 2026 Rahul Vats, Cerevia
+# Copyright 2026 Rahul Vats, Cerevia (cerevia.in)
 """Checks for switchboard.py. No network, no keys.   python test_switchboard.py"""
 from __future__ import annotations
 

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
-// Copyright 2026 Rahul Vats, Cerevia
+// Copyright 2026 Rahul Vats, Cerevia (cerevia.in)
 /* cradle-physics.js: Newton's cradle as a real simulation, not an animation.
  *
  * Each ball is a point mass on a rigid string of length L under gravity g (a pendulum): theta'' = -(g/L) sin(theta) - drag*theta'.
