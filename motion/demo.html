@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: Apache-2.0 | Copyright 2026 Ninth Dimension -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cerevia Motion demo</title>
+<style>
+  body{margin:0;padding:32px;font:16px/1.5 system-ui,sans-serif;background:#ece7dd;color:#12150f;max-width:720px}
+  h1{font-size:28px;margin:0 0 4px} p{margin:6px 0 16px;color:#454a40}
+  .box{width:56px;height:56px;border-radius:50%;background:#2757b6}
+  button{font:inherit;padding:10px 16px;margin:0 8px 8px 0;border:1.5px solid #12150f;border-radius:999px;background:transparent;cursor:pointer}
+  canvas{display:block;background:#e3ddd1;border-radius:16px;max-width:100%}
+  .track{background:#e3ddd1;border-radius:16px;padding:12px;margin-bottom:20px}
+</style></head><body>
+<h1>Cerevia Motion</h1>
+<p>Springs, a real Newton's cradle, and reduced-motion support. Open this file in a browser.</p>
+
+<h2>Springs</h2>
+<p>The same move with two damping ratios. 1 never overshoots. 0.5 overshoots and settles.</p>
+<div class="track"><div class="box" id="a"></div></div>
+<div class="track"><div class="box" id="b"></div></div>
+<button id="go">Move</button><span id="rm" style="color:#5f6358"></span>
+
+<h2>Newton's cradle</h2>
+<p>A simulation, not an animation. Click a ball to lift it and let go.</p>
+<canvas id="c" width="640" height="260"></canvas>
+
+<script src="motion.js"></script><script src="cradle-physics.js"></script>
+<script>
+const M = CereviaMotion, el = id => document.getElementById(id);
+document.getElementById('rm').textContent = M.reduced() ? 'Reduced motion is on: moves jump to the end.' : '';
+let right = false;
+const sa = M.createSpring({ response: 0.45, ratio: 1,   onUpdate: x => el('a').style.transform = `translateX(${x}px)` });
+const sb = M.createSpring({ response: 0.45, ratio: 0.5, onUpdate: x => el('b').style.transform = `translateX(${x}px)` });
+el('go').onclick = () => { right = !right; sa.to(right ? 560 : 0); sb.to(right ? 560 : 0); };
+
+const cv = el('c'), g = cv.getContext('2d'), sim = CradlePhysics.create({ n: 5 });
+const K = 300, ox = 120, oy = 20;
+const px = i => ox + sim.center(i).x * K, py = i => oy + sim.center(i).y * K;
+sim.lift(sim.n - 1, 0.6);
+let last = performance.now();
+function frame(now) {
+  sim.advance((now - last) / 1000); last = now;
+  g.clearRect(0, 0, cv.width, cv.height);
+  g.strokeStyle = '#454a40'; g.lineWidth = 2; g.beginPath(); g.moveTo(ox - 20, oy); g.lineTo(ox + sim.pivotX(sim.n - 1) * K + 20, oy); g.stroke();
+  for (let i = 0; i < sim.n; i++) {
+    const bx = px(i), by = py(i), tx = ox + sim.pivotX(i) * K;
+    g.strokeStyle = 'rgba(18,21,15,.35)'; g.lineWidth = 1.2; g.beginPath(); g.moveTo(tx, oy); g.lineTo(bx, by); g.stroke();
+    g.fillStyle = i === sim.n - 1 ? '#eb642f' : '#2757b6'; g.beginPath(); g.arc(bx, by, sim.r * K, 0, 6.2832); g.fill();
+  }
+  requestAnimationFrame(frame);
+}
+cv.onclick = e => { const r = cv.getBoundingClientRect(), x = (e.clientX - r.left) * cv.width / r.width; let best = 0, bd = 1e9;
+  for (let i = 0; i < sim.n; i++) { const d = Math.abs(px(i) - x); if (d < bd) { bd = d; best = i; } }
+  sim.reset(); sim.lift(best, best < sim.n / 2 ? -0.6 : 0.6); };
+requestAnimationFrame(frame);
+</script></body></html>

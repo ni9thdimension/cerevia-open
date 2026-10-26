@@ -1,0 +1,11 @@
+{
+  "name": "cerevia-motion",
+  "version": "0.1.0",
+  "description": "Physics-based UI motion: springs, gravity, path, particles and a real Newton's cradle. No dependencies.",
+  "license": "Apache-2.0",
+  "main": "motion.js",
+  "files": ["motion.js", "cradle-physics.js"],
+  "scripts": { "test": "node test_motion.js && node test_cradle.js" },
+  "keywords": ["animation", "spring", "physics", "motion", "reduced-motion"],
+  "repository": { "type": "git", "url": "git+https://github.com/ni9thdimension/cerevia-open.git" }
+}
